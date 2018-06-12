@@ -16,7 +16,8 @@ public class EquipWeapon implements Runnable {
 
     @Override
     public void run() {
-        WItem weapon = getWeapon(gui.maininv);
+        // WItem weapon = getWeapon(gui.maininv);
+        WItem weapon = null;
 
         Inventory beltInv = null;
         InventoryBelt quickBeltInv = null;
@@ -31,8 +32,10 @@ public class EquipWeapon implements Runnable {
                     }
                 }
 
-                if (belt == null)
+                if (belt == null) {
+                    gui.error("Belt is null");
                     return;
+                }
 
                 for (Widget w = belt.lchild; w != null; w = w.prev) {
                     if (w instanceof InventoryBelt) {
@@ -41,6 +44,7 @@ public class EquipWeapon implements Runnable {
 
                         IMeter.Meter stam = gui.getmeter("stam", 0);
                         if (stam == null || stam.a > 99) {
+                            gui.error("Stamina is full!");
                             return;
                         }
 
@@ -55,21 +59,44 @@ public class EquipWeapon implements Runnable {
                             }
                         }
 
-                        return;
-                    }
-                }
-            } else {
-                Window belt = gui.getwnd("Belt");
-                if (belt == null)
-                    return;
-
-                for (Widget w = belt.lchild; w != null; w = w.prev) {
-                    if (w instanceof Inventory) {
-                        beltInv = (Inventory) w;
-                        weapon = getWeapon((Inventory) w);
                         break;
                     }
                 }
+//            } else {
+//                Window belt = gui.getwnd("Belt");
+//
+//                if (belt == null) {
+//                    gui.error("Belt is null at else");
+//                    return;
+//                }
+//
+//                for (Widget w = belt.lchild; w != null; w = w.prev) {
+//                    if (w instanceof Inventory) {
+//                        beltInv = (Inventory) w;
+//                        // weapon = getWeapon((Inventory) w);
+//
+//                        IMeter.Meter stam = gui.getmeter("stam", 0);
+//                        if (stam == null || stam.a > 99) {
+//                            gui.error("Stamina is full!");
+//                            return;
+//                        }
+//
+//                        List<WItem> containers = beltInv.getItemsPartial("Waterskin");
+//                        gui.error(String.valueOf(containers.size()));
+//
+//                        for (WItem wi : containers) {
+//                            ItemInfo.Contents cont = wi.item.getcontents();
+//                            if (cont != null) {
+//                                FlowerMenu.setNextSelection("Drink");
+//                                gui.ui.lcc = wi.rootpos();
+//                                wi.item.wdgmsg("iact", wi.c, 0);
+//                            }
+//                        }
+//
+//                        break;
+//                    }
+//                }
+//            }
             }
         }
 
