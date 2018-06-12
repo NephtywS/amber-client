@@ -168,7 +168,7 @@ public class WItem extends Widget implements DTarget {
         GItem.InfoOverlay<?>[] ret = buf.toArray(new GItem.InfoOverlay<?>[0]);
         return(() -> ret);
     });
-    
+
     public final AttrCache<Double> itemmeter = new AttrCache<>(this::info, AttrCache.map1(GItem.MeterInfo.class, minf -> {
         GItem itm = WItem.this.item;
         if (minf != null) {
@@ -190,9 +190,9 @@ public class WItem extends Widget implements DTarget {
     private GSprite lspr = null;
 
     public void tick(double dt) {
-    /* XXX: This is ugly and there should be a better way to
-     * ensure the resizing happens as it should, but I can't think
-	 * of one yet. */
+        /* XXX: This is ugly and there should be a better way to
+         * ensure the resizing happens as it should, but I can't think
+         * of one yet. */
         GSprite spr = item.spr();
         if ((spr != null) && (spr != lspr)) {
             Coord sz = new Coord(spr.sz());

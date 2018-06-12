@@ -101,4 +101,20 @@ public class InventoryBelt extends Widget implements DTarget {
         }
         return null;
     }
+
+    public List<WItem> getItemsPartial(String... names) {
+        List<WItem> items = new ArrayList<WItem>();
+        for (Widget wdg = child; wdg != null; wdg = wdg.next) {
+            if (wdg instanceof WItem) {
+                String wdgname = ((WItem)wdg).item.getname();
+                for (String name : names) {
+                    if (wdgname.contains(name)) {
+                        items.add((WItem) wdg);
+                        break;
+                    }
+                }
+            }
+        }
+        return items;
+    }
 }
