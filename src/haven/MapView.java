@@ -1811,7 +1811,7 @@ public class MapView extends PView implements DTarget, Console.Directory, PFList
                     pfRightClick(gob, (int)args[8], clickb, 0, null);
                 } else {
                     wdgmsg("click", args);
-                    if (Config.autopickmussels && gob.type == Gob.Type.MUSSEL)
+                    if (Config.autopickmussels && (gob.type == Gob.Type.MUSSEL || gob.type == Gob.Type.GRAY_CLAY))
                         startMusselsPicker(gob);
                 }
             }

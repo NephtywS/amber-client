@@ -1,5 +1,6 @@
-package haven.automation;
+/* Modified on 18/06/11, merged with block split for now */
 
+package haven.automation;
 
 import haven.*;
 
@@ -10,8 +11,8 @@ public class ButcherFish implements Runnable, WItemDestroyCallback {
     private static final int TIMEOUT = 2000;
     private static final int DELAY = 8;
 
-    public ButcherFish(GameUI gui) {
-        this.gameUI = gui;
+    public ButcherFish(GameUI gameUI) {
+        this.gameUI = gameUI;
     }
 
     @Override
@@ -23,9 +24,9 @@ public class ButcherFish implements Runnable, WItemDestroyCallback {
         if (fish == null) {
             WItem block;
 
-            block = Utils.findItemByPrefixInInv(gameUI.maininv, "gfx/invobjs/small/wblock");
-
             while (true) {
+                block = Utils.findItemByPrefixInInv(gameUI.maininv, "gfx/invobjs/small/wblock");
+
                 if (block == null) {
                     block = Utils.findItemByPrefixInInv(gameUI.maininv, "gfx/invobjs/wblock");
 
@@ -68,6 +69,7 @@ public class ButcherFish implements Runnable, WItemDestroyCallback {
                 fish.item.wdgmsg("iact", fish.c, 0);
 
                 int timeout = 0;
+
                 while (!fishdone) {
                     timeout += DELAY;
                     if (timeout >= TIMEOUT)

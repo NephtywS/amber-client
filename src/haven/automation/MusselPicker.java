@@ -1,5 +1,6 @@
-package haven.automation;
+/* Modified on 18/06/12, merged with gray clay picker for now */
 
+package haven.automation;
 
 import haven.*;
 
@@ -19,6 +20,7 @@ public class MusselPicker implements Runnable {
     @Override
     public void run() {
         long s = System.currentTimeMillis();
+
         while (!Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(500);
@@ -39,6 +41,11 @@ public class MusselPicker implements Runnable {
                     try {
                         Resource res = gob.getres();
                         if (res != null && res.name.equals("gfx/terobjs/herbs/mussels")) {
+                            if (closestsMussel == null || gob.rc.dist(initMussel.rc) < closestsMussel.rc.dist(initMussel.rc))
+                                closestsMussel = gob;
+                        }
+
+                        else if (res != null && res.name.equals("gfx/terobjs/herbs/clay-gray")) {
                             if (closestsMussel == null || gob.rc.dist(initMussel.rc) < closestsMussel.rc.dist(initMussel.rc))
                                 closestsMussel = gob;
                         }
