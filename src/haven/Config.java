@@ -327,6 +327,7 @@ public class Config {
         put("Slice up", new CheckListboxItem("Slice up", Resource.BUNDLE_FLOWER));
         put("Chip stone", new CheckListboxItem("Chip stone", Resource.BUNDLE_FLOWER));
         put("Peer into", new CheckListboxItem("Peer into", Resource.BUNDLE_FLOWER));
+        put("Crumble", new CheckListboxItem("Crumble", Resource.BUNDLE_FLOWER));
     }};
 
     public final static Map<String, Tex> additonalicons = new HashMap<String, Tex>(16) {{
