@@ -16,7 +16,7 @@
     <exec executable="git" outputproperty="gitrev" failifexecutionfails="false">
       <arg line="rev-parse HEAD" />
     </exec>
-    <echo file="build/classes/buildinfo" xml:space="default">${version},${gitrev}</echo>
+    <echo file="build/classes/buildinfo" xml:space="default">1.68.2-1,${gitrev}</echo>
   </target>
 
   <target name="hafen-client" depends="build-env">
